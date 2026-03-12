@@ -54,7 +54,7 @@ export default function Chatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-24 right-6 w-[350px] bg-[#0a0a0a] border border-white/10 shadow-2xl z-50 flex flex-col overflow-hidden"
+            className="fixed bottom-24 right-6 w-[350px] bg-[#0a0a0a] border border-white/10 shadow-2xl z-50 flex flex-col rounded-xl overflow-hidden"
           >
             <div className="p-4 border-b border-white/10 flex justify-between items-center bg-[#050505]">
               <div className="flex items-center gap-3">
@@ -65,48 +65,49 @@ export default function Chatbot() {
                 <X className="w-5 h-5" />
               </button>
             </div>
-            
+
             <div className="flex-1 p-4 overflow-y-auto max-h-[400px] min-h-[300px] flex flex-col gap-4">
               {messages.map((msg) => (
                 <div key={msg.id} className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}>
-                  <div 
-                    className={`max-w-[85%] p-4 text-sm font-light leading-relaxed ${
-                      msg.sender === 'user' 
-                        ? 'bg-white text-black' 
-                        : 'bg-[#111] text-gray-300 border border-white/5'
+                  <div
+                    className={`max-w-[85%] p-4 text-sm font-light leading-relaxed rounded-2xl ${
+                      msg.sender === 'user'
+                        ? 'bg-white text-black rounded-tr-sm'
+                        : 'bg-[#111] text-gray-300 border border-white/5 rounded-tl-sm'
                     }`}
                   >
                     {msg.text}
+
                     {msg.action && (
-  <a
-    href="https://calendly.com/carlosmedinamentor/llamada-de-30-minutos"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="mt-4 block text-center bg-[#b8955a] text-black px-4 py-2 rounded text-sm font-bold tracking-wide hover:bg-[#d4af37] transition-all"
-  >
-    Agendar Llamada
-  </a>
-)}
-              </div>
-          </div>
-        ))}
-        <div ref={messagesEndRef} />
-      </div>
+                      <a
+                        href="https://calendly.com/carlosmedinamentor/llamada-de-30-minutos"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-4 block text-center bg-[#b8955a] text-black px-4 py-2 rounded text-sm font-bold tracking-wide hover:bg-[#d4af37] transition-all"
+                      >
+                        Agendar Llamada
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
+              <div ref={messagesEndRef} />
+            </div>
 
             <form onSubmit={handleSubmit} className="p-4 border-t border-white/10 bg-[#050505] flex gap-2">
-              <input 
-                type="text" 
+              <input
+                type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="Escribe tu mensaje..."
                 className="flex-1 bg-transparent border-none outline-none text-sm text-white placeholder:text-gray-600 font-light"
               />
-              <button 
+              <button
                 type="submit"
                 disabled={!inputValue.trim()}
-                className="text-gray-500 hover:text-white disabled:opacity-50 disabled:hover:text-gray-500 transition-colors"
+                className="w-10 h-10 flex items-center justify-center bg-white text-black rounded-full hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:hover:bg-white"
               >
-                <Send className="w-5 h-5" />
+                <Send className="w-4 h-4" />
               </button>
             </form>
           </motion.div>
@@ -114,10 +115,10 @@ export default function Chatbot() {
       </AnimatePresence>
 
       <motion.button
+        onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 w-14 h-14 bg-white text-black rounded-full shadow-lg flex items-center justify-center z-50 hover:bg-gray-200 transition-colors"
+        className="fixed bottom-6 right-6 w-14 h-14 bg-white rounded-full shadow-2xl flex items-center justify-center text-black z-50 hover:bg-gray-100 transition-colors"
       >
         {isOpen ? <X className="w-6 h-6" /> : <Feather className="w-6 h-6" />}
       </motion.button>

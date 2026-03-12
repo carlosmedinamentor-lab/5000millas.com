@@ -77,17 +77,18 @@ export default function Chatbot() {
                     }`}
                   >
                     {msg.text}
+                    {msg.action && (
+  <a
+    href="https://calendly.com/carlosmedinamentor/llamada-de-30-minutos"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="mt-4 block text-center bg-[#b8955a] text-black px-4 py-2 rounded text-sm font-bold tracking-wide hover:bg-[#d4af37] transition-all"
+  >
+    Agendar Llamada
+  </a>
+)}
                   </div>
-                  {msg.action && (
-                    <a 
-                      href="#"
-                      className="mt-3 px-6 py-3 bg-yellow-600/20 text-yellow-500 border border-yellow-600/30 text-xs uppercase tracking-widest hover:bg-yellow-600/30 transition-colors"
-                    >
-                      Agendar Llamada
-                    </a>
-                  )}
-                </div>
-              ))}
+            
               <div ref={messagesEndRef} />
             </div>
 

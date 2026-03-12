@@ -26,23 +26,22 @@ export default function Chatbot() {
     setMessages(prev => [...prev, { id: Date.now(), text: userMsg, sender: 'user' }]);
     setInputValue('');
 
-    // Simple bot logic
     setTimeout(() => {
       if (userMsg.toLowerCase() === 'sí' || userMsg.toLowerCase() === 'si' || userMsg.toLowerCase() === 'yes') {
-        setMessages(prev => [...prev, { 
-          id: Date.now(), 
-          text: "Excelente. Elige tu fecha en nuestro calendario:", 
+        setMessages(prev => [...prev, {
+          id: Date.now(),
+          text: "Excelente. Elige tu fecha en nuestro calendario:",
           sender: 'bot',
           action: true
         }]);
       } else {
-        setMessages(prev => [...prev, { 
-          id: Date.now(), 
-          text: "Entendido. Si cambias de opinión o quieres explorar publicar tu mensaje, escribe 'Sí'.", 
-          sender: 'bot' 
+        setMessages(prev => [...prev, {
+          id: Date.now(),
+          text: "Entiendo. Si decides emprender el viaje y contar tu historia, estamos aquí.",
+          sender: 'bot'
         }]);
       }
-    }, 1000);
+    }, 500);
   };
 
   return (

@@ -87,10 +87,11 @@ export default function Chatbot() {
     Agendar Llamada
   </a>
 )}
-                  </div>
-            
-              <div ref={messagesEndRef} />
-            </div>
+              </div>
+          </div>
+        ))}
+        <div ref={messagesEndRef} />
+      </div>
 
             <form onSubmit={handleSubmit} className="p-4 border-t border-white/10 bg-[#050505] flex gap-2">
               <input 
